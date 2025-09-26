@@ -62,7 +62,6 @@ public:
 	}
 
 
-
 	void reset()// Delete last commit
 	{
 
@@ -117,26 +116,22 @@ public:
 	}
 
 
-
+	~CommitHistory() //Destructor 
+	{
+		while (head)
+		{
+			Commit* temp = head;
+			head = head->next;
+			delete temp;
+			//Deleting one by one
+			//Because if we delete head, or somethere in the middle
+			//We will lose connection to out Linked List
+		}
+	}
 };
 
 //***
 
-
-CommitHistory::~CommitHistory() //Destructor 
-{
-	//delete;
-	while (head)
-	{
-		Commit* temp = head;
-		head = head->next;
-		delete temp;
-
-		//Deleting one by one
-		//Because if we delete head, or somethere in the middle
-		//We will lose connection to out Linked List
-	}
-}
 
 int main() //Main from materials
 {
@@ -179,3 +174,17 @@ int main() //Main from materials
 	return 0;
 }
 
+/*
+
+
+== Master Branch ==
+== Feature Branch ==
+== Reset last commit on master ==
+== Merged History ==Branches merged when done!
+
+== Master Branch Unchanged after merge==
+== Feature Branch Unchanged after merge==
+
+
+
+*/
